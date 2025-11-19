@@ -1,0 +1,179 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: dractical <dracticalrblx@gmail.com>
+Date: Wed, 19 Nov 2025 00:10:54 -0500
+Subject: [PATCH] Rebrand
+
+
+diff --git a/src/main/java/com/destroystokyo/paper/Metrics.java b/src/main/java/com/destroystokyo/paper/Metrics.java
+index 6abc57669e87f7f98f3b76af3c0e50825fea6eb1..b834dcb46c647cacecd320e0ec15d148f046aa53 100644
+--- a/src/main/java/com/destroystokyo/paper/Metrics.java
++++ b/src/main/java/com/destroystokyo/paper/Metrics.java
+@@ -593,7 +593,7 @@ public class Metrics {
+             boolean logFailedRequests = config.getBoolean("logFailedRequests", false);
+             // Only start Metrics, if it's enabled in the config
+             if (config.getBoolean("enabled", true)) {
+-                Metrics metrics = new Metrics("Paper", serverUUID, logFailedRequests, Bukkit.getLogger());
++                Metrics metrics = new Metrics("Fembyte", serverUUID, logFailedRequests, Bukkit.getLogger());
+ 
+                 metrics.addCustomChart(new Metrics.SimplePie("minecraft_version", () -> {
+                     String minecraftVersion = Bukkit.getVersion();
+@@ -607,11 +607,11 @@ public class Metrics {
+                 final String implVersion = org.bukkit.craftbukkit.Main.class.getPackage().getImplementationVersion();
+                 if (implVersion != null) {
+                     final String buildOrHash = implVersion.substring(implVersion.lastIndexOf('-') + 1);
+-                    paperVersion = "git-Paper-%s-%s".formatted(Bukkit.getServer().getMinecraftVersion(), buildOrHash);
++                    paperVersion = "git-Fembyte-%s-%s".formatted(Bukkit.getServer().getMinecraftVersion(), buildOrHash);
+                 } else {
+                     paperVersion = "unknown";
+                 }
+-                metrics.addCustomChart(new Metrics.SimplePie("paper_version", () -> paperVersion));
++                metrics.addCustomChart(new Metrics.SimplePie("fembyte_version", () -> paperVersion));
+ 
+                 metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
+                     Map<String, Map<String, Integer>> map = new HashMap<>();
+diff --git a/src/main/java/io/papermc/paper/command/PaperVersionCommand.java b/src/main/java/io/papermc/paper/command/PaperVersionCommand.java
+index a7d1a959af6a810c0ce6d5baa08e4429e14d4f5b..4fddc23586107388c41fce7e7c94ef01e3fe1251 100644
+--- a/src/main/java/io/papermc/paper/command/PaperVersionCommand.java
++++ b/src/main/java/io/papermc/paper/command/PaperVersionCommand.java
+@@ -1,7 +1,7 @@
+ package io.papermc.paper.command;
+ 
+-import com.destroystokyo.paper.PaperVersionFetcher;
+ import com.destroystokyo.paper.util.VersionFetcher;
++import com.dractical.fembyte.FembyteVersionFetcher;
+ import com.mojang.brigadier.Command;
+ import com.mojang.brigadier.arguments.StringArgumentType;
+ import com.mojang.brigadier.context.CommandContext;
+@@ -11,10 +11,6 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
+ import io.papermc.paper.command.brigadier.CommandSourceStack;
+ import io.papermc.paper.command.brigadier.Commands;
+ import io.papermc.paper.plugin.configuration.PluginMeta;
+-import java.util.Arrays;
+-import java.util.List;
+-import java.util.Locale;
+-import java.util.concurrent.CompletableFuture;
+ import net.kyori.adventure.text.Component;
+ import net.kyori.adventure.text.JoinConfiguration;
+ import net.kyori.adventure.text.TextComponent;
+@@ -29,6 +25,11 @@ import org.bukkit.plugin.Plugin;
+ import org.bukkit.util.StringUtil;
+ import org.jspecify.annotations.NullMarked;
+ 
++import java.util.Arrays;
++import java.util.List;
++import java.util.Locale;
++import java.util.concurrent.CompletableFuture;
++
+ @NullMarked
+ public class PaperVersionCommand {
+     public static final String DESCRIPTION = "Gets the version of this server including any plugins in use";
+@@ -45,7 +46,7 @@ public class PaperVersionCommand {
+     private static final Component FAILED_TO_FETCH = Component.text("Could not fetch version information!", NamedTextColor.RED);
+     private static final Component FETCHING = Component.text("Checking version, please wait...", NamedTextColor.WHITE, TextDecoration.ITALIC);
+ 
+-    private final VersionFetcher versionFetcher = new PaperVersionFetcher();
++    private final VersionFetcher versionFetcher = new FembyteVersionFetcher();
+     private CompletableFuture<ComputedVersion> computedVersion = CompletableFuture.completedFuture(new ComputedVersion(Component.empty(), -1)); // Precompute-- someday move that stuff out of bukkit
+ 
+     public static LiteralCommandNode<CommandSourceStack> create() {
+diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
+index c1aad9203af20102e560571435dfa75150b37c1b..655ac8eac4b170df66077760d3b00b16dd977068 100644
+--- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
++++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
+@@ -12,32 +12,16 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
+ import com.mojang.logging.LogUtils;
+ import com.mojang.serialization.Dynamic;
+ import com.mojang.serialization.JsonOps;
+-import io.papermc.paper.registry.RegistryKey;
+-import java.io.File;
+-import java.io.IOException;
+-import java.nio.charset.StandardCharsets;
+-import java.util.ArrayList;
+-import java.util.HashMap;
+-import java.util.LinkedHashMap;
+-import java.util.List;
+-import java.util.Locale;
+-import java.util.Map;
+-import java.util.Set;
+-import java.util.logging.Level;
+-import java.util.stream.Stream;
+ import io.papermc.paper.entity.EntitySerializationFlag;
++import io.papermc.paper.registry.RegistryKey;
+ import net.minecraft.SharedConstants;
+ import net.minecraft.advancements.AdvancementHolder;
+ import net.minecraft.commands.Commands;
+ import net.minecraft.commands.arguments.item.ItemParser;
+ import net.minecraft.core.registries.BuiltInRegistries;
+ import net.minecraft.core.registries.Registries;
+-import net.minecraft.nbt.CompoundTag;
+-import net.minecraft.nbt.NbtOps;
+-import net.minecraft.nbt.NbtUtils;
+-import net.minecraft.nbt.StringTag;
++import net.minecraft.nbt.*;
+ import net.minecraft.nbt.Tag;
+-import net.minecraft.nbt.TagParser;
+ import net.minecraft.resources.ResourceLocation;
+ import net.minecraft.server.MinecraftServer;
+ import net.minecraft.server.level.ServerLevel;
+@@ -52,12 +36,7 @@ import net.minecraft.world.level.block.state.BlockState;
+ import net.minecraft.world.level.storage.LevelResource;
+ import net.minecraft.world.level.storage.TagValueInput;
+ import net.minecraft.world.level.storage.TagValueOutput;
+-import org.bukkit.Bukkit;
+-import org.bukkit.Keyed;
+-import org.bukkit.Material;
+-import org.bukkit.NamespacedKey;
+-import org.bukkit.UnsafeValues;
+-import org.bukkit.World;
++import org.bukkit.*;
+ import org.bukkit.advancement.Advancement;
+ import org.bukkit.attribute.Attribute;
+ import org.bukkit.attribute.AttributeModifier;
+@@ -86,6 +65,13 @@ import org.bukkit.plugin.PluginDescriptionFile;
+ import org.bukkit.potion.PotionType;
+ import org.slf4j.Logger;
+ 
++import java.io.File;
++import java.io.IOException;
++import java.nio.charset.StandardCharsets;
++import java.util.*;
++import java.util.logging.Level;
++import java.util.stream.Stream;
++
+ @SuppressWarnings("deprecation")
+ public final class CraftMagicNumbers implements UnsafeValues {
+ 
+@@ -481,7 +467,7 @@ public final class CraftMagicNumbers implements UnsafeValues {
+ 
+     @Override
+     public com.destroystokyo.paper.util.VersionFetcher getVersionFetcher() {
+-        return new com.destroystokyo.paper.PaperVersionFetcher();
++        return new com.dractical.fembyte.FembyteVersionFetcher();
+     }
+ 
+     @Override
+diff --git a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
+index 774556a62eb240da42e84db4502e2ed43495be17..65fbb37fdb9c08b3f4359d0f35e8f4cbe1b6b32b 100644
+--- a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
++++ b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
+@@ -1,17 +1,18 @@
+ package org.bukkit.craftbukkit.util;
+ 
++import org.bukkit.Bukkit;
++
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.util.Properties;
+ import java.util.logging.Level;
+ import java.util.logging.Logger;
+-import org.bukkit.Bukkit;
+ 
+ public final class Versioning {
+     public static String getBukkitVersion() {
+         String result = "Unknown-Version";
+ 
+-        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/io.papermc.paper/paper-api/pom.properties");
++        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/com.dractical.fembyte/fembyte-api/pom.properties");
+         Properties properties = new Properties();
+ 
+         if (stream != null) {

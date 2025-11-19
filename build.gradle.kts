@@ -50,5 +50,6 @@ subprojects {
         mavenCentral()
         maven(paperMavenPublicUrl)
         maven("https://jitpack.io")
+        maven("https://repo.bsdevelopment.org/releases/") // Fembyte - config library
     }
 }
