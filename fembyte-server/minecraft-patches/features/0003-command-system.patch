@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: dractical <dracticalrblx@gmail.com>
+Date: Wed, 19 Nov 2025 11:12:20 -0500
+Subject: [PATCH] command system
+
+
+diff --git a/net/minecraft/server/dedicated/DedicatedServer.java b/net/minecraft/server/dedicated/DedicatedServer.java
+index 98927d4a5fba2a0dcdb147ac10b82c3286ccdc6b..7eff2eacc46987ac8f6d164ba41421aa02f60f32 100644
+--- a/net/minecraft/server/dedicated/DedicatedServer.java
++++ b/net/minecraft/server/dedicated/DedicatedServer.java
+@@ -1,5 +1,6 @@
+ package net.minecraft.server.dedicated;
+ 
++import com.dractical.fembyte.command.FembyteCommandManager;
+ import com.google.common.collect.Lists;
+ import com.mojang.authlib.GameProfile;
+ import com.mojang.datafixers.DataFixer;
+@@ -183,6 +184,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+         io.papermc.paper.command.PaperCommands.registerCommands(this); // Paper - setup /paper command
+         this.server.spark.registerCommandBeforePlugins(this.server); // Paper - spark
+         com.destroystokyo.paper.Metrics.PaperMetrics.startMetrics(); // Paper - start metrics
++        com.dractical.fembyte.command.FembyteCommandManager.registerCommands(this); // fembyte - commands
+         com.destroystokyo.paper.VersionHistoryManager.INSTANCE.getClass(); // Paper - load version history now
+ 
+         this.setPvpAllowed(properties.pvp);

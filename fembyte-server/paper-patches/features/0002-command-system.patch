@@ -1,0 +1,18 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: dractical <dracticalrblx@gmail.com>
+Date: Wed, 19 Nov 2025 11:12:20 -0500
+Subject: [PATCH] command system
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/util/permissions/CraftDefaultPermissions.java b/src/main/java/org/bukkit/craftbukkit/util/permissions/CraftDefaultPermissions.java
+index 7ad31b059c1c7a1a2fae1fa7a3359da5343e217d..5c0b1839a81741bbae5e7a6ae6bb1cc4b5c22bfb 100644
+--- a/src/main/java/org/bukkit/craftbukkit/util/permissions/CraftDefaultPermissions.java
++++ b/src/main/java/org/bukkit/craftbukkit/util/permissions/CraftDefaultPermissions.java
+@@ -5,6 +5,7 @@ import org.bukkit.util.permissions.DefaultPermissions;
+ 
+ public final class CraftDefaultPermissions {
+     private static final String ROOT = "minecraft";
++    public static final String FEMBYTE_ROOT = "fembyte";
+ 
+     private CraftDefaultPermissions() {}
+ 
