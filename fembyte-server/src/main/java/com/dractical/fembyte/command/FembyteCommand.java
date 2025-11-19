@@ -1,6 +1,7 @@
 package com.dractical.fembyte.command;
 
 import com.dractical.fembyte.command.sub.FembyteReloadCommand;
+import com.dractical.fembyte.command.sub.FembyteStatusCommand;
 import io.papermc.paper.command.CommandUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -34,6 +35,7 @@ public class FembyteCommand extends Command {
         this.description = "Root command for Fembyte functionality";
         this.setPermission(BASE_PERM);
         registerSubcommand(new FembyteReloadCommand());
+        registerSubcommand(new FembyteStatusCommand());
         this.usageMessage = createUsageMessage(this.subcommands.keySet());
         final PluginManager pluginManager = Bukkit.getServer().getPluginManager();
         if (pluginManager.getPermission(BASE_PERM) == null) {
