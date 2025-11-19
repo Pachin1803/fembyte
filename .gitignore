@@ -1,0 +1,15 @@
+fembyte-api/build.gradle.kts
+fembyte-api/bin
+fembyte-server/build.gradle.kts
+fembyte-server/src/minecraft
+fembyte-server/bin
+
+paper-api
+paper-server
+paper-api-generator
+
+build/
+.gradle/
+
+.idea/
+
