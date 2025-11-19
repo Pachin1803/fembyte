@@ -17,7 +17,10 @@ public class MobSpawningModule extends ConfigModule {
         ENABLED = config.getBoolean(
                 path() + "enabled",
                 false,
-                ""
+                """
+                        Offloads spawning calculations to a separate thread,
+                        but spawns the actual mob on the main thread.
+                        """
         );
 
         CALCULATION_TIMEOUT_MS = config.getLong(
