@@ -7,6 +7,7 @@ public class TickIntervalsModule extends ConfigModule {
 
     public static boolean ENABLED = false;
     public static int COLLISION_INTERVAL = 3;
+    public static int INSIDE_BLOCK_INTERVAL = 3;
 
     private static String path() {
         return ConfigCategory.PERFORMANCE.getBaseKeyName() + ".tick-interval.";
@@ -25,6 +26,14 @@ public class TickIntervalsModule extends ConfigModule {
                 5,
                 """
                         Ticks between checking collisions.
+                        """
+        );
+
+        INSIDE_BLOCK_INTERVAL = config.getInt(
+                path() + "inside-block",
+                5,
+                """
+                        Ticks between checking entity block-inside collision checks.
                         """
         );
     }
