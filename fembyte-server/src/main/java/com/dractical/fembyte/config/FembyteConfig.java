@@ -36,9 +36,6 @@ public final class FembyteConfig {
 
     private static volatile FembyteGlobalConfig globalConfig;
 
-    private static int previousMinorVersion;
-    private static int currentMinorVersion;
-
     private FembyteConfig() {
     }
 

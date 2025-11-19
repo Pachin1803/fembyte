@@ -9,8 +9,6 @@ import java.util.Map;
 
 public final class FembyteGlobalConfig {
 
-    private static final String CURRENT_VERSION = "1.0.0";
-
     private final ConfigFile configFile;
 
     public FembyteGlobalConfig(boolean initial) throws Exception {
