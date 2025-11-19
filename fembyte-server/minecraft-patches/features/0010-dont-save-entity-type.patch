@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: dractical <dracticalrblx@gmail.com>
+Date: Wed, 19 Nov 2025 17:10:08 -0500
+Subject: [PATCH] dont save entity type
+
+
+diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
+index 4f8b377ba66231c9b55dd33f689dd7f6e81868be..d55fcfb8bdfff66507b00a6e12afad5d54323b97 100644
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
+@@ -1,5 +1,6 @@
+ package net.minecraft.world.entity;
+ 
++import com.dractical.fembyte.config.modules.performance.DontSaveModule;
+ import com.dractical.fembyte.config.modules.performance.TickIntervalsModule;
+ import com.google.common.collect.ImmutableList;
+ import com.google.common.collect.Lists;
+@@ -5183,6 +5184,12 @@ public abstract class Entity implements SyncedDataHolder, Nameable, EntityAccess
+ 
+     @Override
+     public boolean shouldBeSaved() {
++        // fembyte start - disable saving entity types
++        if (DontSaveModule.shouldSkipSaving(this.getType())) {
++            return false;
++        }
++        // fembyte end - disable saving entity types
++
+         return (this.removalReason == null || this.removalReason.shouldSave())
+             && !this.isPassenger()
+             && (!this.isVehicle() || !((ca.spottedleaf.moonrise.patches.chunk_system.entity.ChunkSystemEntity)this).moonrise$hasAnyPlayerPassengers()); // Paper - rewrite chunk system
