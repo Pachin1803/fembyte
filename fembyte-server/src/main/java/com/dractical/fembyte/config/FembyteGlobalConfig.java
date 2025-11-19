@@ -166,6 +166,59 @@ public final class FembyteGlobalConfig {
         }
     }
 
+    public <E extends Enum<E>> E getEnum(String path, E def, String comment) {
+        configFile.addDefault(path, def.name(), comment);
+
+        String raw = configFile.getString(path, def.name());
+        if (raw == null) {
+            return def;
+        }
+
+        try {
+            return Enum.valueOf(def.getDeclaringClass(), raw.toUpperCase());
+        } catch (IllegalArgumentException ex) {
+            FembyteConfig.LOGGER.warn(
+                    "{} contains invalid enum value '{}'. Using default '{}'.",
+                    path, raw, def.name()
+            );
+            return def;
+        }
+    }
+
+    public <E extends Enum<E>> E getEnum(String path, E def) {
+        configFile.addDefault(path, def.name());
+
+        String raw = configFile.getString(path, def.name());
+        if (raw == null) {
+            return def;
+        }
+
+        try {
+            return Enum.valueOf(def.getDeclaringClass(), raw.toUpperCase());
+        } catch (IllegalArgumentException ex) {
+            FembyteConfig.LOGGER.warn(
+                    "{} contains invalid enum value '{}'. Using default '{}'.",
+                    path, raw, def.name()
+            );
+            return def;
+        }
+    }
+
+    public <E extends Enum<E>> E getEnum(String path, Class<E> enumClass) {
+        String raw = configFile.getString(path, null);
+        if (raw == null) return null;
+
+        try {
+            return Enum.valueOf(enumClass, raw.toUpperCase());
+        } catch (IllegalArgumentException ex) {
+            FembyteConfig.LOGGER.warn(
+                    "{} contains invalid enum value '{}'. Skipping.",
+                    path, raw
+            );
+            return null;
+        }
+    }
+
     public List<String> getList(String path) {
         return configFile.getList(path, null);
     }
