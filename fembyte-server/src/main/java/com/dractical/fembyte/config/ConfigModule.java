@@ -2,6 +2,8 @@ package com.dractical.fembyte.config;
 
 import com.dractical.fembyte.config.annotations.Experimental;
 import com.dractical.fembyte.config.annotations.DontLoad;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -14,9 +16,11 @@ public abstract class ConfigModule {
     private static final Set<ConfigModule> MODULES = new LinkedHashSet<>();
 
     protected final FembyteGlobalConfig config;
+    protected final Logger logger;
 
     protected ConfigModule() {
         this.config = FembyteConfig.config();
+        this.logger = LoggerFactory.getLogger(getClass());
     }
 
     public static void initModules() throws NoSuchMethodException,
