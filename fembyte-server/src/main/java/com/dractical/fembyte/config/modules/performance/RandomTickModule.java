@@ -21,7 +21,7 @@ public final class RandomTickModule extends ConfigModule {
         ENABLED = config.getBoolean(
                 path() + "enabled",
                 false,
-                ""
+                "Should random tick optimizations be enabled."
         );
 
         MODE = config.getEnum(
