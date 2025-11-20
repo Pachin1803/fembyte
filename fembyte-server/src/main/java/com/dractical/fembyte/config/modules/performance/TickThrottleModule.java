@@ -25,7 +25,7 @@ public class TickThrottleModule extends ConfigModule {
         ENABLED = config.getBoolean(
                 path() + "enabled",
                 false,
-                ""
+                "Enables a tick throttling system, which skips ticks when TPS drops."
         );
 
         RANDOM_ACTIVATION_TPS = config.getDouble(

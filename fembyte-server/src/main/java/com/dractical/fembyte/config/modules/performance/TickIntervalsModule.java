@@ -18,7 +18,7 @@ public class TickIntervalsModule extends ConfigModule {
         ENABLED = config.getBoolean(
                 path() + "enabled",
                 false,
-                ""
+                "Master switch for controlling tick intervals."
         );
 
         COLLISION_INTERVAL = config.getInt(
